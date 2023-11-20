@@ -1,25 +1,66 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] AudioClip crash;
+    [SerializeField] AudioClip success;
+    AudioSource myAudioSource;
+
+    bool isTransitionning = false;
+
+    void Start(){
+        myAudioSource = GetComponent<AudioSource>();
+    }
+
     void OnCollisionEnter(Collision other) 
     {
+        if(isTransitionning){
+            return;
+        }
         switch (other.gameObject.tag)
         {
-            case "Friendly":
+            case "Fiendly":
                 Debug.Log("This is friendly");
                 break;
             
             case "Finish":
-                Debug.Log("This is the end");
-                break;
-            
-            case "Fuel":
-                Debug.Log("this is fuel");
+                StartSuccessSequence();               
                 break;
             default: 
-                Debug.Log("You blew up");
+                StartCrashingSequence();
                 break;
         }
-    }
+        }
+
+        void StartCrashingSequence(){
+            isTransitionning = true;
+            myAudioSource.PlayOneShot(crash);
+            GetComponent<Movement>().enabled = false;
+            Invoke("ReloadLevel", levelLoadDelay);                
+        }
+
+        void StartSuccessSequence(){
+            isTransitionning = true;
+            myAudioSource.PlayOneShot(success);
+            GetComponent<Movement>().enabled = false;
+            Invoke("NextLevel", levelLoadDelay);                
+        }
+
+        void ReloadLevel(){
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(currentSceneIndex);
+        }
+
+        void NextLevel(){
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                int nextSceneIndex = currentSceneIndex + 1;
+                if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){
+                    nextSceneIndex = 0;
+                }
+                SceneManager.LoadScene(nextSceneIndex);
+                
+        }
+    
 }

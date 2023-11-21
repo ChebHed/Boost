@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &189608240 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1585533140820062680, guid: e86e142b6f0fd224d962504ca336901b, type: 3}
+  m_PrefabInstance: {fileID: 3569173244357240891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +314,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1005830769 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5579455436620528457, guid: e86e142b6f0fd224d962504ca336901b, type: 3}
+  m_PrefabInstance: {fileID: 3569173244357240891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1139999414
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,8 +480,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5b5a4fee91e7691418c057a71748fb86, type: 2}
+    - target: {fileID: 8859578207848494572, guid: e86e142b6f0fd224d962504ca336901b, type: 3}
+      propertyPath: crashParticles
+      value: 
+      objectReference: {fileID: 1005830769}
+    - target: {fileID: 8859578207848494572, guid: e86e142b6f0fd224d962504ca336901b, type: 3}
+      propertyPath: successParticles
+      value: 
+      objectReference: {fileID: 189608240}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2841660691840834217, guid: e86e142b6f0fd224d962504ca336901b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86e142b6f0fd224d962504ca336901b, type: 3}

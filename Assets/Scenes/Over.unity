@@ -527,6 +527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sucky rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 5771119085137255809, guid: b5be91134b50f4847ad3993fcb178bd3, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
